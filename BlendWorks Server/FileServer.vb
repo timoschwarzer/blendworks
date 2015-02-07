@@ -152,11 +152,11 @@ Public Class WebServer
     End Sub
 
     Private Sub notImplemented(clientSocket As Socket)
-        sendResponse(clientSocket, "<html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8""></head><body><h2>setagon WebServer</h2><div>501 - Method Not Implemented</div></body></html>", "501 Not Implemented", "text/html")
+        sendResponse(clientSocket, "<html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8""></head><body><h2>tiweb WebServer</h2><div>501 - Method Not Implemented</div></body></html>", "501 Not Implemented", "text/html")
     End Sub
 
     Private Sub notFound(clientSocket As Socket)
-        sendResponse(clientSocket, "<html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8""></head><body><h2>setagon WebServer</h2><div>404 - Not Found</div></body></html>", "404 Not Found", "text/html")
+        sendResponse(clientSocket, "<html><head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8""></head><body><h2>tiweb WebServer</h2><div>404 - Not Found</div></body></html>", "404 Not Found", "text/html")
     End Sub
 
     Private Sub sendOkResponse(clientSocket As Socket, bContent As Byte(), contentType As String)
@@ -172,7 +172,7 @@ Public Class WebServer
     ' For byte arrays
     Private Sub sendResponse(clientSocket As Socket, bContent As Byte(), responseCode As String, contentType As String)
         Try
-            Dim bHeader As Byte() = charEncoder.GetBytes("HTTP/1.1 " & responseCode & vbCr & vbLf & "Server: setagon_WebServer" & vbCr & vbLf & "Content-Length: " & bContent.Length.ToString() & vbCr & vbLf & "Connection: close" & vbCr & vbLf & "Content-Type: " & contentType & vbCr & vbLf & vbCr & vbLf)
+            Dim bHeader As Byte() = charEncoder.GetBytes("HTTP/1.1 " & responseCode & vbCr & vbLf & "Server: tiweb_WebServer" & vbCr & vbLf & "Content-Length: " & bContent.Length.ToString() & vbCr & vbLf & "Connection: close" & vbCr & vbLf & "Content-Type: " & contentType & vbCr & vbLf & vbCr & vbLf)
             clientSocket.Send(bHeader)
             clientSocket.Send(bContent)
             clientSocket.Close()

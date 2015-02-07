@@ -120,17 +120,24 @@ Namespace My.Resources
         
         '''<summary>
         '''  Sucht eine lokalisierte Zeichenfolge, die &lt;html&gt;
-        '''                &lt;head&gt;
-        '''                    &lt;title&gt;BlendWorks&lt;/title&gt;
-        '''                    &lt;meta name=&quot;author&quot; content=&quot;http://setagon.com&quot;/&gt;
-        '''                    &lt;meta content=&apos;width=device-width, initial-scale=1&apos; name=&apos;viewport&apos;/&gt;
-        '''                    &lt;link rel=&quot;shortcut icon&quot; href=&quot;icon.ico&quot; type=&quot;image/x-icon&quot;/&gt;
-        '''                    &lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
-        '''                &lt;/head&gt;
-        '''                &lt;body&gt;
-        '''                    &lt;style type=&quot;text/css&quot;&gt;
-        '''                        body {
-        '''     [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        '''	&lt;head&gt;
+        '''		&lt;title&gt;BlendWorks&lt;/title&gt;
+        '''		&lt;meta name=&quot;author&quot; content=&quot;Timo Schwarzer - setagon.com&quot;/&gt;
+        '''		&lt;meta content=&apos;width=device-width, initial-scale=1&apos; name=&apos;viewport&apos;/&gt;
+        '''		&lt;link rel=&quot;shortcut icon&quot; href=&quot;icon.ico&quot; type=&quot;image/x-icon&quot;/&gt;
+        '''		&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+        '''	&lt;/head&gt;
+        '''	&lt;body&gt;
+        '''		&lt;style type=&quot;text/css&quot;&gt;
+        '''			body {
+        '''				background-color: #f3f3f3;
+        '''				font-family: Segoe UI, SunSans-Regular, Sans-Serif;
+        '''				margin: 0px;
+        '''			}
+        '''
+        '''			#cprBottomFrame {
+        '''				position:fixed;
+        '''				width: [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         '''</summary>
         Friend ReadOnly Property loadscript() As String
             Get

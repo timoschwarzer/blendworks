@@ -149,122 +149,121 @@
   </data>
   <data name="loadscript" xml:space="preserve">
     <value>&lt;html&gt;
-                &lt;head&gt;
-                    &lt;title&gt;BlendWorks&lt;/title&gt;
-                    &lt;meta name="author" content="http://setagon.com"/&gt;
-                    &lt;meta content='width=device-width, initial-scale=1' name='viewport'/&gt;
-                    &lt;link rel="shortcut icon" href="icon.ico" type="image/x-icon"/&gt;
-                    &lt;script src="jquery.js"&gt;&lt;/script&gt;
-                &lt;/head&gt;
-                &lt;body&gt;
-                    &lt;style type="text/css"&gt;
-                        body {
-                            background-color: #f3f3f3;
-	                        font-family: Segoe UI, SunSans-Regular, Sans-Serif;
-	                        margin: 0px;
-                        }
+	&lt;head&gt;
+		&lt;title&gt;BlendWorks&lt;/title&gt;
+		&lt;meta name="author" content="Timo Schwarzer - setagon.com"/&gt;
+		&lt;meta content='width=device-width, initial-scale=1' name='viewport'/&gt;
+		&lt;link rel="shortcut icon" href="icon.ico" type="image/x-icon"/&gt;
+		&lt;script src="jquery.js"&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;style type="text/css"&gt;
+			body {
+				background-color: #f3f3f3;
+				font-family: Segoe UI, SunSans-Regular, Sans-Serif;
+				margin: 0px;
+			}
 
-                        #setagonBottomFrame {
-	                        position:fixed;
-	                        width: 100%;
-	                        padding-top:10px;
-	                        height: 6vh;
-	                        margin-left: 0px;
-	                        margin-right: 0px;
-	                        font-size: 2vh;
-	                        bottom: 0px;
-	                        background: -moz-linear-gradient(top,  #BBBBBB 3%, #ffffff 3.1%); /* FF3.6+ */
-	                        background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#BBBBBB), color-stop(3.1%,#ffffff)); /* Chrome,Safari4+ */
-	                        background: -webkit-linear-gradient(top,  #BBBBBB 3%,#ffffff 3.1%); /* Chrome10+,Safari5.1+ */
-	                        background: -o-linear-gradient(top,  #BBBBBB 3%,#ffffff 3.1%); /* Opera 11.10+ */
-	                        background: -ms-linear-gradient(top,  #BBBBBB 3%,#ffffff 3.1%); /* IE10+ */
-	                        background: linear-gradient(to bottom,  #BBBBBB 3%,#ffffff 3.1%); /* W3C */
-                        }
+			#cprBottomFrame {
+				position:fixed;
+				width: 100%;
+				padding-top:10px;
+				height: 6vh;
+				margin-left: 0px;
+				margin-right: 0px;
+				font-size: 2vh;
+				bottom: 0px;
+				background: -moz-linear-gradient(top,  #BBBBBB 3%, #ffffff 3.1%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(3%,#BBBBBB), color-stop(3.1%,#ffffff)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,  #BBBBBB 3%,#ffffff 3.1%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,  #BBBBBB 3%,#ffffff 3.1%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,  #BBBBBB 3%,#ffffff 3.1%); /* IE10+ */
+				background: linear-gradient(to bottom,  #BBBBBB 3%,#ffffff 3.1%); /* W3C */
+			}
 
-                        table, th, td {
-                            border: 1px solid black;
-                            border-collapse: collapse;
-                            padding: 10px;
-                        }
-                    &lt;/style&gt;
-                    &lt;script type="text/javascript"&gt;
-                        function getSearchParameters() {
-                              var prmstr = window.location.search.substr(1);
-                              return prmstr != null &amp;&amp; prmstr != "" ? transformToAssocArray(prmstr) : {};
-                        }
+			table, th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				padding: 10px;
+			}
+		&lt;/style&gt;
+		&lt;script type="text/javascript"&gt;
+			function getSearchParameters() {
+				  var prmstr = window.location.search.substr(1);
+				  return prmstr != null &amp;&amp; prmstr != "" ? transformToAssocArray(prmstr) : {};
+			}
 
-                        function transformToAssocArray( prmstr ) {
-                            var params = {};
-                            var prmarr = prmstr.split("&amp;");
-                            for ( var i = 0; i &lt; prmarr.length; i++) { //&gt;
-                                var tmparr = prmarr[i].split("=");
-                                params[tmparr[0]] = tmparr[1];
-                            }
-                            return params;
-                        }
+			function transformToAssocArray( prmstr ) {
+				var params = {};
+				var prmarr = prmstr.split("&amp;");
+				for ( var i = 0; i &lt; prmarr.length; i++) { //&gt;
+					var tmparr = prmarr[i].split("=");
+					params[tmparr[0]] = tmparr[1];
+				}
+				return params;
+			}
 
-                        var params = getSearchParameters();
+			var params = getSearchParameters();
 
-						var pageToLoad = "content.htm";
-						
-						if (params.l != null) {
-							pageToLoad = params.l;
-						}
-						
-                        var IsPageLoading = false;
-                        var errCount = 0;
-                        setInterval('refreshFunc(pageToLoad)', 3000)
+			var pageToLoad = "content.htm";
+			
+			if (params.l != null) {
+				pageToLoad = params.l;
+			}
+			
+			var IsPageLoading = false;
+			var errCount = 0;
+			setInterval('refreshFunc(pageToLoad)', 3000)
 
-						refreshFunc(pageToLoad);
-						
-                        function refreshFunc(ptl)
-                        {
-							pageToLoad = ptl;
-                            if (IsPageLoading == false) {
-                                IsPageLoading = true;
-                                $.ajax({
-                                        async: true,
-                                        type: "GET",
-                                        url: ptl,
-                                        success: function (html) {
-                                            $("#content").html(html);        
-                                            IsPageLoading = false;        
-                                            errCount = 0;
-                                        },
-                                        error: function () {
-                                            IsPageLoading = false;               
-                                            if (errCount == 1) {
-                                                $("#content").html("&lt;center&gt;Can't reach server.&lt;/center&gt;");   
-                                            } else {
-                                                $("#content").html('&lt;br/&gt;');
-                                                errCount++; 
-                                            }
-                                        }  
-                                    });
-                                $("#content").append('&lt;br/&gt;&lt;center&gt;&lt;img src="load.gif" alt="Loading..."/&gt;&lt;/center&gt;');
-                            }
-                        }
-                    &lt;/script&gt;
-                    &lt;center&gt;&lt;a href="/"&gt;&lt;img src="logo.png" style="width: 50vh;" alt="BlendWorks"/&gt;&lt;/a&gt;&lt;/center&gt;
-                    &lt;br/&gt;
-                    &lt;center&gt;
-                        &lt;div id="content"&gt;
-                            &lt;center&gt;&lt;img src="load.gif" alt="Loading..."/&gt;&lt;/center&gt;
-                        &lt;/div&gt;
-                    &lt;/center&gt;
-					&lt;br&gt;
-					&lt;br&gt;
-					&lt;br&gt;
-					&lt;br&gt;
+			refreshFunc(pageToLoad);
+			
+			function refreshFunc(ptl)
+			{
+				pageToLoad = ptl;
+				if (IsPageLoading == false) {
+					IsPageLoading = true;
+					$.ajax({
+							async: true,
+							type: "GET",
+							url: ptl,
+							success: function (html) {
+								$("#content").html(html);        
+								IsPageLoading = false;        
+								errCount = 0;
+							},
+							error: function () {
+								IsPageLoading = false;               
+								if (errCount == 1) {
+									$("#content").html("&lt;center&gt;Can't reach server.&lt;/center&gt;");   
+								} else {
+									$("#content").html('&lt;br/&gt;');
+									errCount++; 
+								}
+							}  
+						});
+					$("#content").append('&lt;br/&gt;&lt;center&gt;&lt;img src="load.gif" alt="Loading..."/&gt;&lt;/center&gt;');
+				}
+			}
+		&lt;/script&gt;
+		&lt;center&gt;&lt;a href="/"&gt;&lt;img src="logo.png" style="width: 50vh;" alt="BlendWorks"/&gt;&lt;/a&gt;&lt;/center&gt;
+		&lt;br/&gt;
+		&lt;center&gt;
+			&lt;div id="content"&gt;
+				&lt;center&gt;&lt;img src="load.gif" alt="Loading..."/&gt;&lt;/center&gt;
+			&lt;/div&gt;
+		&lt;/center&gt;
+		&lt;br&gt;
+		&lt;br&gt;
+		&lt;br&gt;
+		&lt;br&gt;
 
-                    &lt;div id="setagonBottomFrame"&gt;
-                        &lt;center&gt;
-                            &lt;small&gt;Copyright &amp;copy; setagon - 2014&lt;/small&gt;&lt;br/&gt;
-                            &lt;a target="_blank" href="https://www.setagon.com"&gt;&lt;img style="height:2.5vh;" src="https://sslsites.de/assets.setagon.com/logo_text_black.png" alt=" "/&gt;&lt;/a&gt;
-                        &lt;/center&gt;
-                    &lt;/div&gt;
-                &lt;/body&gt;
-            &lt;/html&gt;</value>
+		&lt;div id="cprBottomFrame"&gt;
+			&lt;center&gt;
+				&lt;small&gt;Copyright &amp;copy; 2015 - Timo Schwarzer&lt;/small&gt;&lt;br/&gt;
+			&lt;/center&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</value>
   </data>
   <data name="logo600" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo600.rbo;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
