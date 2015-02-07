@@ -1,0 +1,30 @@
+﻿<Window x:Name="RootWindow" x:Class="MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="BlendWorks" Height="455" Width="1039" Background="#FF72ABFF" FontFamily="Segoe WP SemiLight" FontSize="14" Icon="icon.ico">
+    <Grid>
+        <ScrollViewer x:Name="LogScrollViewer" Margin="10,141,10,10">
+            <ScrollViewer.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0.6"/>
+            </ScrollViewer.Effect>
+            <TextBlock x:Name="LogTextBlock"  TextWrapping="Wrap"  Background="#A3000000" Foreground="#FF00D1FF" FontFamily="Consolas" Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+            </TextBlock>
+        </ScrollViewer>
+        <Button x:Name="ConnectButton" Content="OFF" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="111" Height="77" Background="#4CFF0000" BorderBrush="#FFFF3636" BorderThickness="10,0,0,0" Foreground="#FF130000" FontSize="48"/>
+        <Button x:Name="DisconnectButton" Content="ON" HorizontalAlignment="Right" Margin="0,10,9,0" VerticalAlignment="Top" Width="112" Height="77" Background="#6633BB00" BorderBrush="#FF1F7200" BorderThickness="0,0,10,0" RenderTransformOrigin="0.5,0.5" Foreground="Black" IsEnabled="False" Opacity="0" FontSize="48">
+            <Button.RenderTransform>
+                <TranslateTransform Y="-77"/>
+            </Button.RenderTransform>
+        </Button>
+        <Label x:Name="StatusLabel" Content="---" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="87" Width="455" VerticalContentAlignment="Center" FontSize="60" Padding="0"/>
+        <CheckBox x:Name="ExternalIPCheckBox" Content="External IP" HorizontalAlignment="Right" Margin="0,61,126,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="88" Height="24" Background="#19000000"/>
+        <Button x:Name="ShowWebViewButton" Content="WEB VIEW" HorizontalAlignment="Right" Margin="0,10,126,0" VerticalAlignment="Top" Width="88" Height="46" Background="#19000000" BorderBrush="Black" BorderThickness="10,0,0,0"/>
+        <TextBlock x:Name="BlenderLogTextBlock"  TextWrapping="Wrap"  Background="#A0000000" Foreground="#FF00D1FF" FontFamily="Consolas" Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Margin="10,92,10,0" Height="44" VerticalAlignment="Top">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="0.6"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBox x:Name="BlenderExecutableTextBox" HorizontalAlignment="Right" Height="46" Margin="0,10,219,0" TextWrapping="Wrap" Text="---" VerticalAlignment="Top" Width="342" IsReadOnly="True" IsUndoEnabled="False" Background="#19000000" BorderBrush="Black" BorderThickness="10,0,0,0" Padding="5,5,5,0"/>
+        <Button x:Name="ChangeBlenderExecutableButton" Content="CHANGE" HorizontalAlignment="Right" Margin="0,56,473,0" VerticalAlignment="Top" Width="88" Height="29" Background="#19000000" BorderBrush="Black" BorderThickness="10,0,0,0"/>
+    </Grid>
+</Window>
