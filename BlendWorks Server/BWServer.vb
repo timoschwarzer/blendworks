@@ -8,7 +8,7 @@ Imports System.Windows.Threading
 Public Class BWServer
     Private server As TcpListener
     Private client As New TcpClient
-    Private ipendpoint As IPEndPoint = New IPEndPoint(IPAddress.Any, EXCHANGE_SERVER_PORT) ' eingestellt ist port 8000. dieser muss ggf. freigegeben sein!
+    Private ipendpoint As IPEndPoint = New IPEndPoint(IPAddress.Any, EXCHANGE_SERVER_PORT)
     Private list As New List(Of Connection)
     Public Const NewLineStr As String = "<-nl>"
     Private _doStrop As Boolean = False
@@ -54,7 +54,7 @@ Public Class BWServer
         RaiseEventServerStarted()
         RaiseEventActionPendingChanged(False)
 
-        While True ' wir warten auf eine neue verbindung...
+        While True
 
             Do Until server.Pending
                 System.Threading.Thread.Sleep(500)
@@ -80,7 +80,7 @@ Public Class BWServer
 
             Dim ipend As Net.IPEndPoint = CType(client.Client.RemoteEndPoint, Net.IPEndPoint)
 
-            Dim c As New Connection ' und erstellen für die neue verbindung eine neue connection...
+            Dim c As New Connection
             c.stream = client.GetStream
             c.streamr = New StreamReader(c.stream)
             c.streamw = New StreamWriter(c.stream)
@@ -89,7 +89,7 @@ Public Class BWServer
             c.paused = False
             c.doSafeDisconnect = False
 
-            c.nick = c.streamr.ReadLine ' falls das mit dem nick nicht gewünscht, auch diese zeile entfernen.
+            c.nick = c.streamr.ReadLine
 
             Dim nicknameAlreadyExists As Boolean = False
             For Each Con As Connection In list
@@ -100,11 +100,10 @@ Public Class BWServer
             Next
 
             If Not nicknameAlreadyExists Then
-                list.Add(c) ' und fügen sie der liste der clients hinzu.
+                list.Add(c)
                 Log(c.nick & " is connected.")
 
                 RaiseEventClientConnected(c)
-                ' falls alle anderen das auch lesen sollen können, an alle clients weiterleiten.
 
                 Dim t As New System.Threading.Thread( _
                     Sub()
@@ -125,7 +124,7 @@ Public Class BWServer
     Public Sub ListenToConnection(ByVal con As Connection)
         Do
             Try
-                Dim tmp As String = con.streamr.ReadLine ' warten, bis etwas empfangen wird...
+                Dim tmp As String = con.streamr.ReadLine
 
                 If tmp.Split("~"c).Count = 3 Then
 
@@ -141,7 +140,7 @@ Public Class BWServer
 
                     'outcoming:   to,to,to~func~msg OR .servercmd
                     'incoming:    from~func~msg
-                    For Each c As Connection In list ' an alle clients weitersenden.
+                    For Each c As Connection In list
                         Try
                             If ([to].Count = 0 OrElse [to].Contains(c.nick)) And Not c.nick = con.nick Then
                                 c.streamw.WriteLine(con.nick + "~" + func + "~" + msg)
@@ -157,7 +156,7 @@ Public Class BWServer
                     Log("invalid format: '" + tmp + "'")
                 End If
 
-            Catch ex As Exception ' die aktuelle überwachte verbindung hat sich wohl verabschiedet.
+            Catch ex As Exception
 
                 RaiseEventClientDisconnected(con.nick)
                 list.Remove(con)
@@ -202,7 +201,7 @@ Public Class BWServer
         con.streamw.Flush()
     End Sub
     Public Sub SendToAllClients(msg As String, func As String, Optional except As String() = Nothing)
-        For Each c As Connection In list ' an alle clients weitersenden.
+        For Each c As Connection In list
             If except Is Nothing OrElse except.Contains(c.nick) Then
                 Try
                     c.streamw.WriteLine(".~" + func + "~" + msg)
@@ -283,6 +282,7 @@ Public Class BWServer
         Rendering = 2
     End Enum
 #End Region
+
 End Class
 
 
@@ -294,5 +294,5 @@ Public Class Connection
     Public status As BWServer.BWStatus
     Public paused As Boolean
     Public doSafeDisconnect As Boolean
-    Public nick As String ' natürlich optional, aber für die identifikation des clients empfehlenswert.
+    Public nick As String
 End Class

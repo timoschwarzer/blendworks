@@ -89,6 +89,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property blender_socket() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("blender_socket", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         '''</summary>
         Friend ReadOnly Property icon() As Byte()
@@ -135,6 +145,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("logo600", resourceCulture)
                 Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property setagon_Black_Small() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("setagon_Black_Small", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         

@@ -14,6 +14,22 @@ Public Class MainWindow
 
 
 #Region "Event Handler"
+    Private Sub AboutLabel_MouseLeftButtonUp(sender As Object, e As MouseButtonEventArgs) Handles AboutLabel.MouseLeftButtonUp
+        Dim newAboutWindow As New AboutWindow
+        newAboutWindow.Owner = Me
+        newAboutWindow.ShowDialog()
+    End Sub
+    Private Sub RootWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles RootWindow.Loaded
+        If Not My.Settings.upgraded Then
+            Try
+                My.Settings.Upgrade()
+                My.Settings.upgraded = True
+                My.Settings.Save()
+            Catch
+            End Try
+        End If
+    End Sub
+
     Private Sub myServer_ActionPendingChanged(isPending As Boolean) Handles myServer.ActionPendingChanged
         MainGrid.IsEnabled = Not isPending
     End Sub
@@ -448,4 +464,5 @@ Public Class MainWindow
     End Sub
 #End Region
 
+    
 End Class

@@ -7,13 +7,13 @@ Public Class AnimationBase
     Private _myControl As UIElement = Nothing
 #End Region
 
-#Region "Public Sub New()"
+#Region "Constructor"
     Public Sub New(_myCtrl As UIElement)
         _myControl = _myCtrl
     End Sub
 #End Region
 
-#Region "Funktionen"
+#Region "Functions"
     Public Sub Fade([to] As Double, Optional duration As Integer = 300, Optional EnablePowerEase As Boolean = False)
         Dim anim As New DoubleAnimation([to], New Duration(TimeSpan.FromMilliseconds(duration)))
         Dim pe As New PowerEase With {.EasingMode = EasingMode.EaseInOut, .Power = 6}

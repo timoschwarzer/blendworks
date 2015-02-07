@@ -5,5 +5,11 @@
     <Setting Name="BlenderExecutable" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Program Files\Blender Foundation\Blender\blender.exe</Value>
     </Setting>
+    <Setting Name="rendered_frames" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="upgraded" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

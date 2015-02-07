@@ -13,14 +13,14 @@ Option Explicit On
 
 
 
-<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(), _
- Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0"), _
- Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)> _
+<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0"),  _
+ Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
 Partial Friend NotInheritable Class MySettings
     Inherits Global.System.Configuration.ApplicationSettingsBase
-
-    Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()), MySettings)
-
+    
+    Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
+    
 #Region "Funktion zum automatischen Speichern von My.Settings"
 #If _MyType = "WindowsForms" Then
     Private Shared addedHandler As Boolean
@@ -35,10 +35,10 @@ Partial Friend NotInheritable Class MySettings
     End Sub
 #End If
 #End Region
-
+    
     Public Shared ReadOnly Property [Default]() As MySettings
         Get
-
+            
 #If _MyType = "WindowsForms" Then
                If Not addedHandler Then
                     SyncLock addedHandlerLockObject
@@ -52,28 +52,52 @@ Partial Friend NotInheritable Class MySettings
             Return defaultInstance
         End Get
     End Property
-
-    <Global.System.Configuration.UserScopedSettingAttribute(), _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-     Global.System.Configuration.DefaultSettingValueAttribute("C:\Program Files\Blender Foundation\Blender\blender.exe")> _
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("C:\Program Files\Blender Foundation\Blender\blender.exe")>  _
     Public Property BlenderExecutable() As String
         Get
-            Return CType(Me("BlenderExecutable"), String)
+            Return CType(Me("BlenderExecutable"),String)
         End Get
-        Set(value As String)
+        Set
             Me("BlenderExecutable") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+    Public Property rendered_frames() As Integer
+        Get
+            Return CType(Me("rendered_frames"),Integer)
+        End Get
+        Set
+            Me("rendered_frames") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+    Public Property upgraded() As Boolean
+        Get
+            Return CType(Me("upgraded"),Boolean)
+        End Get
+        Set
+            Me("upgraded") = value
         End Set
     End Property
 End Class
 
 Namespace My
-
-    <Global.Microsoft.VisualBasic.HideModuleNameAttribute(), _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()> _
+    
+    <Global.Microsoft.VisualBasic.HideModuleNameAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
     Friend Module MySettingsProperty
-
-        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")> _
+        
+        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
         Friend ReadOnly Property Settings() As Global.BlendWorksClient.MySettings
             Get
                 Return Global.BlendWorksClient.MySettings.Default

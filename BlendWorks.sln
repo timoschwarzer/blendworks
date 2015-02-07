@@ -9,7 +9,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BlendWorks Server", "BlendW
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A639696F-E9B3-4690-9996-07D478E8D911}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\OneDrive\Synchronized Projects\blauncher\LICENSE = ..\..\..\..\OneDrive\Synchronized Projects\blauncher\LICENSE
+		LICENSE = LICENSE
 	EndProjectSection
 EndProject
 Global

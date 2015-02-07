@@ -18,6 +18,12 @@ Class MainWindow
 #End Region
 
 #Region "Event Handler"
+    Private Sub AboutLabel_MouseLeftButtonUp(sender As Object, e As MouseButtonEventArgs) Handles AboutLabel.MouseLeftButtonUp
+        Dim newAboutWindow As New AboutWindow
+        newAboutWindow.Owner = Me
+        newAboutWindow.ShowDialog()
+    End Sub
+
     Private Sub myClient_Connected(ip As IPEndPoint) Handles myClient.Connected
         myWebServer = New WebServerTwo(WEB_SERVER_PATH)
 
@@ -140,6 +146,15 @@ Class MainWindow
         End If
     End Sub
     Private Sub RootWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles RootWindow.Loaded
+        If Not My.Settings.upgraded Then
+            Try
+                My.Settings.Upgrade()
+                My.Settings.upgraded = True
+                My.Settings.Save()
+            Catch
+            End Try
+        End If
+
         SetStatus(-1)
     End Sub
     Private Sub ShowWebViewButton_Click(sender As Object, e As RoutedEventArgs) Handles ShowWebViewButton.Click
@@ -276,6 +291,5 @@ Class MainWindow
         If myClient.IsConnected And sendStatusToServer Then myClient.Send("status", s.ToString)
     End Sub
 #End Region
-
 
 End Class

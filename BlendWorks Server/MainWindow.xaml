@@ -12,14 +12,14 @@
                 <TranslateTransform Y="-27"/>
             </Button.RenderTransform>
         </Button>
-        <ScrollViewer x:Name="LogScrollViewer" Margin="10,268,10,23">
+        <ScrollViewer x:Name="LogScrollViewer" Margin="10,268,10,29">
             <ScrollViewer.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="0.6"/>
             </ScrollViewer.Effect>
             <TextBlock x:Name="LogTextBlock"  TextWrapping="Wrap"  Background="#A3000000" Foreground="#FF17FF00" FontFamily="Consolas" Padding="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
         </ScrollViewer>
         <Button x:Name="SendFileButton" Content="ADD JOB..." HorizontalAlignment="Right" Margin="0,69,10,0" VerticalAlignment="Top" Width="107" Height="65" Background="#19000000" BorderBrush="Black" BorderThickness="10,0,0,0"/>
-        <ListView x:Name="ClientListView" Height="124" Margin="10,10,122,0" VerticalAlignment="Top" Background="#19000000" BorderBrush="{x:Null}" Foreground="#FF183220">
+        <ListView x:Name="ClientListView" Height="124" Margin="10,10,122,0" VerticalAlignment="Top" Background="#19000000" BorderBrush="{x:Null}" Foreground="#FF183220" BorderThickness="0">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="ClientPauseMenuItem" Header="---"/>
@@ -35,7 +35,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="JobListView" Height="124" Margin="10,139,10,0" VerticalAlignment="Top" Background="#19000000" BorderBrush="{x:Null}" Foreground="#FF183220">
+        <ListView x:Name="JobListView" Height="124" Margin="10,139,10,0" VerticalAlignment="Top" Background="#19000000" BorderBrush="{x:Null}" Foreground="#FF183220" BorderThickness="0">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="JobPauseMenuItem" Header="---"/>
