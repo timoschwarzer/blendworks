@@ -89,31 +89,44 @@ Public Class MainWindow
                 Catch
                 End Try
 
+                If My.Settings.rendered_frames = 50 Then
+                    If MessageBox.Show( _
+                        "I've rendered 50 frames for you!" + vbNewLine + _
+                        "For you being able to do this, I, Timo, worked many hours on this application." + vbNewLine + _
+                        "I appreciate every donation very much! Would you like to support my work with a donation?", _
+                        "", MessageBoxButton.YesNo) = MessageBoxResult.Yes Then
+
+                        Dim newAboutWindow As New AboutWindow
+                        newAboutWindow.Owner = Me
+                        newAboutWindow.ShowDialog()
+                    End If
+                End If
+
                 Task.Run( _
                     Sub()
-                        Dim args As String() = msg.Split("%"c)
-                        Dim fileUrl As String = "http://" + myServer.GetConnectionByNick(from).endPoint.Address.ToString + ":" + CLIENT_WEB_SERVER_PORT.ToString + "/dl/" + args(0)
-                        Dim frame As Integer = Integer.Parse(args(2))
-                        Dim jobID As Integer = Integer.Parse(args(3))
+                            Dim args As String() = msg.Split("%"c)
+                            Dim fileUrl As String = "http://" + myServer.GetConnectionByNick(from).endPoint.Address.ToString + ":" + CLIENT_WEB_SERVER_PORT.ToString + "/dl/" + args(0)
+                            Dim frame As Integer = Integer.Parse(args(2))
+                            Dim jobID As Integer = Integer.Parse(args(3))
 
-                        Try
-                            EnsureOutputDirectory(args(1))
-                            My.Computer.Network.DownloadFile(fileUrl, RENDER_OUTPUT_DIR + args(1) + "\" + args(1) + "_" + args(2) + ".png", "", "", False, 20000, True)
-                            With JobList(jobID)
-                                .framesProcessing.Remove(frame)
-                                If Not .framesRendered.Contains(frame) Then .framesRendered.Add(frame)
-                            End With
-                            Log("Saved frame " + frame.ToString)
-                            Dispatcher.Invoke(Sub() UpdateJobList())
-                        Catch ex As Exception
-                            Log("Error on frame " + frame.ToString)
-                            If JobList.ContainsKey(jobID) Then
+                            Try
+                                EnsureOutputDirectory(args(1))
+                                My.Computer.Network.DownloadFile(fileUrl, RENDER_OUTPUT_DIR + args(1) + "\" + args(1) + "_" + args(2) + ".png", "", "", False, 20000, True)
                                 With JobList(jobID)
                                     .framesProcessing.Remove(frame)
+                                    If Not .framesRendered.Contains(frame) Then .framesRendered.Add(frame)
                                 End With
-                            End If
-                        End Try
-                    End Sub)
+                                Log("Saved frame " + frame.ToString)
+                                Dispatcher.Invoke(Sub() UpdateJobList())
+                            Catch ex As Exception
+                                Log("Error on frame " + frame.ToString)
+                                If JobList.ContainsKey(jobID) Then
+                                    With JobList(jobID)
+                                        .framesProcessing.Remove(frame)
+                                    End With
+                                End If
+                            End Try
+                        End Sub)
 
             Case "status"
                 Dim newStatus As BWServer.BWStatus = CType(Integer.Parse(msg), BWServer.BWStatus)
