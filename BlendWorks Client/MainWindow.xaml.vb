@@ -257,6 +257,12 @@ Class MainWindow
 
                 System.Threading.Thread.Sleep(250)
 
+                Try
+                    My.Settings.rendered_frames += 1
+                    My.Settings.Save()
+                Catch
+                End Try
+
                 myClient.Send("renderfinished", fileID.ToString + ".png" + "%" + fileMD5 + "%" + frame.ToString + "%" + jobID.ToString)
             End Sub
     End Sub

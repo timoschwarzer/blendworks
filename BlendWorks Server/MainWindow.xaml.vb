@@ -82,6 +82,13 @@ Public Class MainWindow
         Select Case func
 
             Case "renderfinished"
+
+                Try
+                    My.Settings.rendered_frames += 1
+                    My.Settings.Save()
+                Catch
+                End Try
+
                 Task.Run( _
                     Sub()
                         Dim args As String() = msg.Split("%"c)
