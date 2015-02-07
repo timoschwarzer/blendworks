@@ -93,7 +93,8 @@ Public Class MainWindow
                     If MessageBox.Show( _
                         "I've rendered 50 frames for you!" + vbNewLine + _
                         "For you being able to do this, I, Timo, worked many hours on this application." + vbNewLine + _
-                        "I appreciate every donation very much! Would you like to support my work with a donation?", _
+                        "I appreciate every donation very much! Would you like to support my work with a donation?" + vbNewLine + _
+                        "(You can do this later at the 'About' window)", _
                         "", MessageBoxButton.YesNo) = MessageBoxResult.Yes Then
 
                         Dim newAboutWindow As New AboutWindow
