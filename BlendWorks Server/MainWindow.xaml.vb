@@ -448,8 +448,4 @@ Public Class MainWindow
     End Sub
 #End Region
 
-
-
-
-
 End Class

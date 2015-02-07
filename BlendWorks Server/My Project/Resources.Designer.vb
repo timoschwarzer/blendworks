@@ -61,6 +61,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die Copyright (C) 2015  Timo Schwarzer
+        '''
+        '''    This library is free software; you can redistribute it and/or
+        '''    modify it under the terms of the GNU Lesser General Public
+        '''    License as published by the Free Software Foundation; either
+        '''    version 2.1 of the License, or (at your option) any later version.
+        '''
+        '''    This library is distributed in the hope that it will be useful,
+        '''    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        '''    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        '''</summary>
+        Friend ReadOnly Property about_text() As String
+            Get
+                Return ResourceManager.GetString("about_text", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         '''</summary>
         Friend ReadOnly Property ajax_loader() As Byte()
@@ -117,6 +135,15 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("logo600", resourceCulture)
                 Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Zeichenfolge, die  ähnelt.
+        '''</summary>
+        Friend ReadOnly Property String1() As String
+            Get
+                Return ResourceManager.GetString("String1", resourceCulture)
             End Get
         End Property
     End Module
