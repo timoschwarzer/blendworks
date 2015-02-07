@@ -13,9 +13,9 @@ Imports System.Windows
 
 <Assembly: AssemblyTitle("BlendWorks Server")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyCompany("Timo Schwarzer")> 
 <Assembly: AssemblyProduct("BlendWorks Server")> 
-<Assembly: AssemblyCopyright("Copyright © Timo Schwarzer 2015")> 
+<Assembly: AssemblyCopyright("Copyright © 2015 - Timo Schwarzer")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: ComVisible(false)>
 
